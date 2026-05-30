@@ -5,6 +5,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Music, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { getSeoMetadata } from "@/lib/seo-server";
+import { getLocalizedValue } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -13,14 +15,17 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "music" });
-  return { title: t("title"), description: t("subtitle") };
+  return getSeoMetadata("/music", locale, t("title"), t("subtitle"));
 }
 
 export default async function MusicPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("music");
-  const genres = await getMusicGenres();
+  const [t, tDb, genres] = await Promise.all([
+    getTranslations("music"),
+    getTranslations("db"),
+    getMusicGenres(),
+  ]);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12">
@@ -43,15 +48,23 @@ export default async function MusicPage({ params }: Props) {
               <div className="flex items-center gap-2">
                 <Music className="h-5 w-5 text-gold" />
                 <h2 className="text-xl font-bold">
-                  {locale === "ka" && genre.nameKa
-                    ? genre.nameKa
-                    : genre.nameEn}
+                  {getLocalizedValue(
+                    `musicGenres.${genre.slug}.name`,
+                    locale,
+                    genre.nameEn,
+                    genre.nameKa,
+                    tDb
+                  )}
                 </h2>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {locale === "ka" && genre.descriptionKa
-                  ? genre.descriptionKa
-                  : genre.descriptionEn}
+                {getLocalizedValue(
+                  `musicGenres.${genre.slug}.description`,
+                  locale,
+                  genre.descriptionEn,
+                  genre.descriptionKa,
+                  tDb
+                )}
               </p>
 
               {genre.youtubeLinks.length > 0 ? (

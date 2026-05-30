@@ -24,6 +24,7 @@ import { businessUiCopy } from "@/content/business-defaults";
 import { getSeasonalDailyRate, pricingTierMetadata } from "@/lib/car-pricing";
 import { createBooking } from "@/lib/actions/bookings";
 import { toast } from "sonner";
+import { getLocalizedValue } from "@/lib/seo";
 
 interface CarDetailProps {
   car: CarWithBlockedDates;
@@ -34,6 +35,7 @@ export function CarDetail({ car, locale }: CarDetailProps) {
   const t = useTranslations("fleet");
   const tc = useTranslations("common");
   const tb = useTranslations("booking");
+  const tDb = useTranslations("db");
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [startDate, setStartDate] = useState("");
@@ -53,7 +55,13 @@ export function CarDetail({ car, locale }: CarDetailProps) {
       : car.pricePerDay;
   const totalPrice = totalDays * selectedRate;
 
-  const description = locale === "ka" ? car.descriptionKa : car.descriptionEn;
+  const description = getLocalizedValue(
+    `cars.${car.id}.description`,
+    locale,
+    car.descriptionEn,
+    car.descriptionKa,
+    tDb
+  );
 
   const handleBookWhatsApp = async () => {
     setIsBooking(true);

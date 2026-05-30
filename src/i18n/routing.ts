@@ -3,8 +3,8 @@ import { createNavigation } from "next-intl/navigation";
 import { appConfig } from "@/lib/app-config";
 
 export const routing = defineRouting({
-  locales: appConfig.locales as ["en", "ka"],
-  defaultLocale: appConfig.defaultLocale as "en" | "ka",
+  locales: appConfig.locales,
+  defaultLocale: appConfig.defaultLocale,
   localePrefix: "as-needed",
 });
 

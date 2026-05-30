@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { MapPin, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { RegionWithLocations } from "@/types";
+import { getLocalizedValue } from "@/lib/seo";
 
 interface RegionListProps {
   regions: RegionWithLocations[];
@@ -17,6 +18,7 @@ interface RegionListProps {
 
 export function RegionList({ regions, locale }: RegionListProps) {
   const t = useTranslations("places");
+  const tDb = useTranslations("db");
   const [activeRegion, setActiveRegion] = useState<string | null>(null);
 
   return (
@@ -37,7 +39,7 @@ export function RegionList({ regions, locale }: RegionListProps) {
             size="sm"
             onClick={() => setActiveRegion(region.id)}
           >
-            {locale === "ka" && region.nameKa ? region.nameKa : region.nameEn}
+            {getLocalizedValue(`regions.${region.slug}.name`, locale, region.nameEn, region.nameKa, tDb)}
           </Button>
         ))}
       </div>
@@ -57,14 +59,10 @@ export function RegionList({ regions, locale }: RegionListProps) {
               >
                 <div className="mb-4">
                   <h2 className="text-2xl font-bold text-foreground">
-                    {locale === "ka" && region.nameKa
-                      ? region.nameKa
-                      : region.nameEn}
+                    {getLocalizedValue(`regions.${region.slug}.name`, locale, region.nameEn, region.nameKa, tDb)}
                   </h2>
                   <p className="mt-1 text-muted-foreground">
-                    {locale === "ka" && region.descriptionKa
-                      ? region.descriptionKa
-                      : region.descriptionEn}
+                    {getLocalizedValue(`regions.${region.slug}.description`, locale, region.descriptionEn, region.descriptionKa, tDb)}
                   </p>
                   <p className="mt-1 text-sm text-muted-foreground">
                     {region.locations.length} {t("locations")}
@@ -72,34 +70,33 @@ export function RegionList({ regions, locale }: RegionListProps) {
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {region.locations.map((location) => (
-                    <Card
-                      key={location.id}
-                      className="overflow-hidden transition-shadow hover:shadow-md flex flex-col h-full"
-                    >
-                      {location.images && location.images.length > 0 && (
-                        <div className="relative h-48 w-full overflow-hidden">
-                          <Image
-                            src={location.images[0]}
-                            alt={locale === "ka" && location.nameKa ? location.nameKa : location.nameEn}
-                            fill
-                            className="object-cover transition-transform duration-300 hover:scale-105"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          />
-                        </div>
-                      )}
-                      <CardContent className="p-5 flex-1 flex flex-col justify-between">
-                        <div>
-                          <h3 className="font-semibold text-foreground text-lg">
-                            {locale === "ka" && location.nameKa
-                              ? location.nameKa
-                              : location.nameEn}
-                          </h3>
-                          <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
-                            {locale === "ka" && location.descriptionKa
-                              ? location.descriptionKa
-                              : location.descriptionEn}
-                          </p>
+                  {region.locations.map((location) => {
+                    const locName = getLocalizedValue(`locations.${location.id}.name`, locale, location.nameEn, location.nameKa, tDb);
+                    const locDesc = getLocalizedValue(`locations.${location.id}.description`, locale, location.descriptionEn, location.descriptionKa, tDb);
+                    return (
+                      <Card
+                        key={location.id}
+                        className="overflow-hidden transition-shadow hover:shadow-md flex flex-col h-full"
+                      >
+                        {location.images && location.images.length > 0 && (
+                          <div className="relative h-48 w-full overflow-hidden">
+                            <Image
+                              src={location.images[0]}
+                              alt={locName}
+                              fill
+                              className="object-cover transition-transform duration-300 hover:scale-105"
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                          </div>
+                        )}
+                        <CardContent className="p-5 flex-1 flex flex-col justify-between">
+                          <div>
+                            <h3 className="font-semibold text-foreground text-lg">
+                              {locName}
+                            </h3>
+                            <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
+                              {locDesc}
+                            </p>
 
                           {location.types.length > 0 && (
                             <div className="mt-3 flex flex-wrap gap-1">
@@ -132,7 +129,8 @@ export function RegionList({ regions, locale }: RegionListProps) {
                         )}
                       </CardContent>
                     </Card>
-                  ))}
+                  );
+                })}
                 </div>
               </motion.div>
             ))}

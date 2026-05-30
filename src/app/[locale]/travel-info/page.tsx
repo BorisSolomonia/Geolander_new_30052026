@@ -5,6 +5,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Fuel, ShoppingCart, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
+import { getSeoMetadata } from "@/lib/seo-server";
+import { getLocalizedValue } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -13,15 +15,18 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "travelInfo" });
-  return { title: t("title"), description: t("subtitle") };
+  return getSeoMetadata("/travel-info", locale, t("title"), t("subtitle"));
 }
 
 export default async function TravelInfoPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("travelInfo");
-  const stations = await getFuelStations();
-  const marketsList = await getMarkets();
+  const [t, tDb, stations, marketsList] = await Promise.all([
+    getTranslations("travelInfo"),
+    getTranslations("db"),
+    getFuelStations(),
+    getMarkets(),
+  ]);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12">
@@ -40,9 +45,13 @@ export default async function TravelInfoPage({ params }: Props) {
               <CardContent className="p-5">
                 <h3 className="text-lg font-semibold">{station.name}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  {locale === "ka" && station.descriptionKa
-                    ? station.descriptionKa
-                    : station.descriptionEn}
+                  {getLocalizedValue(
+                    `fuelStations.${station.name.toLowerCase().replace(/[^a-z0-9]/g, "")}.description`,
+                    locale,
+                    station.descriptionEn,
+                    station.descriptionKa,
+                    tDb
+                  )}
                 </p>
                 {station.website && (
                   <a
@@ -88,9 +97,13 @@ export default async function TravelInfoPage({ params }: Props) {
                   </Badge>
                 </div>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  {locale === "ka" && market.descriptionKa
-                    ? market.descriptionKa
-                    : market.descriptionEn}
+                  {getLocalizedValue(
+                    `markets.${market.name.toLowerCase().replace(/[^a-z0-9]/g, "")}.description`,
+                    locale,
+                    market.descriptionEn,
+                    market.descriptionKa,
+                    tDb
+                  )}
                 </p>
               </CardContent>
             </Card>

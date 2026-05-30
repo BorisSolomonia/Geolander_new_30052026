@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CarDetail } from "@/components/fleet/car-detail";
 import type { Metadata } from "next";
+import { getSeoMetadata } from "@/lib/seo-server";
 
 export const dynamic = "force-dynamic";
 
@@ -12,13 +13,11 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { carId } = await params;
+  const { locale, carId } = await params;
   const car = await getCarWithBlockedDates(carId);
   if (!car) return { title: "Car Not Found" };
-  return {
-    title: `${car.brand} ${car.model} ${car.year}`,
-    description: car.descriptionEn,
-  };
+  const title = `${car.brand} ${car.model} ${car.year}`;
+  return getSeoMetadata(`/fleet/${carId}`, locale, title, car.descriptionEn);
 }
 
 export default async function CarDetailPage({ params }: Props) {

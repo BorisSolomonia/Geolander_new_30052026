@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 import { getSiteSettings } from "@/lib/site-settings";
+import { getSeoMetadata } from "@/lib/seo-server";
 
 export const dynamic = "force-dynamic";
 
@@ -19,7 +20,7 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "contact" });
-  return { title: t("title"), description: t("subtitle") };
+  return getSeoMetadata("/contact", locale, t("title"), t("subtitle"));
 }
 
 export default async function ContactPage({ params }: Props) {
@@ -34,21 +35,21 @@ export default async function ContactPage({ params }: Props) {
       title: t("whatsapp"),
       value: settings.whatsapp_number,
       href: buildWhatsAppUrl(settings.whatsapp_number, ""),
-      color: "bg-green-100 text-green-700",
+      color: "bg-green-500/10 text-green-400 border border-green-500/20",
     },
     {
       icon: Phone,
       title: t("phone"),
       value: settings.phone,
-      href: `tel:${settings.phone}`,
-      color: "bg-blue-100 text-blue-700",
+      href: buildWhatsAppUrl(settings.whatsapp_number, ""),
+      color: "bg-blue-500/10 text-blue-400 border border-blue-500/20",
     },
     {
       icon: Mail,
       title: t("email"),
       value: settings.email,
       href: `mailto:${settings.email}`,
-      color: "bg-purple-100 text-purple-700",
+      color: "bg-purple-500/10 text-purple-400 border border-purple-500/20",
     },
   ];
 
@@ -100,30 +101,42 @@ export default async function ContactPage({ params }: Props) {
             </div>
           </CardContent>
         </Card>
-        <Card>
-          <CardContent className="flex items-start gap-4 p-6">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
-              <MapPin className="h-5 w-5 text-primary" />
-            </div>
-            <div>
-              <h3 className="font-semibold">{t("address")}</h3>
-              {settings.office_google_maps_url ? (
-                <a
-                  href={settings.office_google_maps_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-1 text-sm text-muted-foreground underline-offset-4 hover:underline"
-                >
-                  {settings.office_name || settings.address}
-                </a>
-              ) : (
+        {settings.office_google_maps_url ? (
+          <a
+            href={settings.office_google_maps_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <Card className="h-full transition-shadow hover:shadow-md cursor-pointer">
+              <CardContent className="flex items-start gap-4 p-6">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                  <MapPin className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground">{t("address")}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground underline underline-offset-4 decoration-primary/40">
+                    {settings.office_name || settings.address}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </a>
+        ) : (
+          <Card>
+            <CardContent className="flex items-start gap-4 p-6">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                <MapPin className="h-5 w-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-semibold">{t("address")}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {settings.address}
                 </p>
-              )}
-            </div>
-          </CardContent>
-        </Card>
+              </div>
+            </CardContent>
+          </Card>
+        )}
       </div>
     </div>
   );

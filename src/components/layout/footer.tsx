@@ -61,9 +61,23 @@ export async function Footer() {
               {t("footer.contactInfo")}
             </h3>
             <ul className="space-y-3">
-              <li className="flex items-start gap-2.5 text-sm text-white/70">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-                {address}
+              <li>
+                {settings.office_google_maps_url ? (
+                  <a
+                    href={settings.office_google_maps_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-2.5 text-sm text-white/70 transition-colors hover:text-white"
+                  >
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
+                    <span>{address}</span>
+                  </a>
+                ) : (
+                  <div className="flex items-start gap-2.5 text-sm text-white/70">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
+                    <span>{address}</span>
+                  </div>
+                )}
               </li>
               <li>
                 <a

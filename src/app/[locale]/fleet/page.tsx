@@ -3,6 +3,7 @@ import { getAvailableCars } from "@/lib/actions/cars";
 import { SectionHeader } from "@/components/shared/section-header";
 import { FleetGrid } from "@/components/fleet/fleet-grid";
 import type { Metadata } from "next";
+import { getSeoMetadata } from "@/lib/seo-server";
 
 export const dynamic = "force-dynamic";
 
@@ -13,10 +14,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "fleet" });
-  return {
-    title: t("title"),
-    description: t("subtitle"),
-  };
+  return getSeoMetadata("/fleet", locale, t("title"), t("subtitle"));
 }
 
 export default async function FleetPage({ params }: Props) {

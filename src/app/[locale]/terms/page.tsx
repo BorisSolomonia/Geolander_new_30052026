@@ -2,13 +2,14 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { SectionHeader } from "@/components/shared/section-header";
 import type { Metadata } from "next";
 import { appConfig } from "@/lib/app-config";
+import { getSeoMetadata } from "@/lib/seo-server";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "terms" });
-  return { title: t("title") };
+  return getSeoMetadata("/terms", locale, t("title"), t("subtitle") || "");
 }
 
 export default async function TermsPage({ params }: Props) {

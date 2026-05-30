@@ -189,5 +189,10 @@
     "password": "Password",
     "signIn": "Sign In",
     "invalidCredentials": "Invalid email or password"
-  }
+  },
+  "meta": {
+    "homeTitle": "Premium Car Rental in Georgia | Geolander",
+    "homeDescription": "Premium car rental in Georgia. Rent reliable 4x4 SUVs, crossovers and passenger cars at the best prices with free airport delivery. Perfect for tourist travel."
+  },
+  "db": {}
 }

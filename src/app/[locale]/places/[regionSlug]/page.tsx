@@ -6,31 +6,37 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
+import { getSeoMetadata } from "@/lib/seo-server";
+import { getLocalizedValue } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
 type Props = { params: Promise<{ locale: string; regionSlug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { regionSlug } = await params;
+  const { locale, regionSlug } = await params;
   const region = await getRegionWithLocations(regionSlug);
   if (!region) return { title: "Region Not Found" };
-  return { title: region.nameEn, description: region.descriptionEn };
+  const tDb = await getTranslations({ locale, namespace: "db" });
+  const title = getLocalizedValue(`regions.${region.slug}.name`, locale, region.nameEn, region.nameKa, tDb);
+  const description = getLocalizedValue(`regions.${region.slug}.description`, locale, region.descriptionEn, region.descriptionKa, tDb);
+  return getSeoMetadata(`/places/${regionSlug}`, locale, title, description);
 }
 
 export default async function RegionDetailPage({ params }: Props) {
   const { locale, regionSlug } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations();
   const region = await getRegionWithLocations(regionSlug);
 
   if (!region) notFound();
 
-  const name = locale === "ka" && region.nameKa ? region.nameKa : region.nameEn;
-  const desc =
-    locale === "ka" && region.descriptionKa
-      ? region.descriptionKa
-      : region.descriptionEn;
+  const [t, tDb] = await Promise.all([
+    getTranslations(),
+    getTranslations("db"),
+  ]);
+
+  const name = getLocalizedValue(`regions.${region.slug}.name`, locale, region.nameEn, region.nameKa, tDb);
+  const desc = getLocalizedValue(`regions.${region.slug}.description`, locale, region.descriptionEn, region.descriptionKa, tDb);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
@@ -52,18 +58,9 @@ export default async function RegionDetailPage({ params }: Props) {
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {region.locations.map((location) => {
-          const locName =
-            locale === "ka" && location.nameKa
-              ? location.nameKa
-              : location.nameEn;
-          const locDesc =
-            locale === "ka" && location.descriptionKa
-              ? location.descriptionKa
-              : location.descriptionEn;
-          const locSpecial =
-            locale === "ka" && location.whatMakesItSpecialKa
-              ? location.whatMakesItSpecialKa
-              : location.whatMakesItSpecialEn;
+          const locName = getLocalizedValue(`locations.${location.id}.name`, locale, location.nameEn, location.nameKa, tDb);
+          const locDesc = getLocalizedValue(`locations.${location.id}.description`, locale, location.descriptionEn, location.descriptionKa, tDb);
+          const locSpecial = getLocalizedValue(`locations.${location.id}.whatMakesItSpecial`, locale, location.whatMakesItSpecialEn, location.whatMakesItSpecialKa, tDb);
 
           return (
             <Card key={location.id} className="transition-shadow hover:shadow-md">

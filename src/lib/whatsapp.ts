@@ -13,9 +13,12 @@ interface BookingMessage {
 
 export function buildWhatsAppUrl(
   phoneNumber: string,
-  message: string
+  message?: string
 ): string {
   const cleanNumber = phoneNumber.replace(/[^+\d]/g, "");
+  if (!message) {
+    return `http://wa.me/${cleanNumber}`;
+  }
   const encodedMessage = encodeURIComponent(message);
   return `${WHATSAPP_BASE_URL}${cleanNumber}?text=${encodedMessage}`;
 }

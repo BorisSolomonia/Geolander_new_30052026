@@ -1,4 +1,4 @@
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Hero } from "@/components/home/hero";
 import { AssuranceStrip } from "@/components/home/assurance-strip";
 import { FleetPreview } from "@/components/home/fleet-preview";
@@ -9,12 +9,20 @@ import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { FAQ } from "@/components/home/faq";
 import { CTA } from "@/components/home/cta";
 import { Suspense } from "react";
+import type { Metadata } from "next";
+import { getSeoMetadata } from "@/lib/seo-server";
 
 export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "meta" });
+  return getSeoMetadata("/", locale, t("homeTitle"), t("homeDescription"));
+}
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
