@@ -74,7 +74,7 @@ export default async function RegionDetailPage({ params }: Props) {
                 </p>
                 {locSpecial && (
                   <div className="mt-3">
-                    <p className="text-xs font-semibold uppercase text-gold-dark">
+                    <p className="text-xs font-semibold uppercase text-primary">
                       {t("places.whatMakesItSpecial")}
                     </p>
                     <p className="mt-1 text-sm text-muted-foreground">
@@ -96,7 +96,7 @@ export default async function RegionDetailPage({ params }: Props) {
                     href={location.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1 text-sm text-navy hover:underline"
+                    className="mt-3 inline-flex items-center gap-1 text-sm text-primary hover:underline"
                   >
                     <MapPin className="h-3.5 w-3.5" />
                     {t("places.viewOnMap")}

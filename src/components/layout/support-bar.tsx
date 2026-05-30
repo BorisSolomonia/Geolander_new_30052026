@@ -12,7 +12,7 @@ export async function SupportBar() {
   const whatsappHref = buildWhatsAppUrl(settings.whatsapp_number, "");
 
   return (
-    <div className="bg-navy text-white">
+    <div className="bg-background border-b border-border/40 text-muted-foreground">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-xs sm:text-sm">
         <div className="flex items-center gap-1.5">
           <Clock className="h-3.5 w-3.5" />
@@ -23,9 +23,9 @@ export async function SupportBar() {
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 transition-colors hover:text-gold-light font-medium"
+            className="flex items-center gap-1.5 transition-colors hover:text-primary font-medium"
           >
-            <MessageCircle className="h-3.5 w-3.5 text-gold-light" />
+            <MessageCircle className="h-3.5 w-3.5 text-primary" />
             <span>{displayPhone}</span>
           </a>
         </div>

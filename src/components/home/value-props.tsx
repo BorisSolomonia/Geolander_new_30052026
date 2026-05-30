@@ -52,7 +52,7 @@ export function ValueProps() {
               className="group rounded-xl border border-border bg-card p-6 transition-all hover:border-gold/50 hover:shadow-md"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gold/10 transition-colors group-hover:bg-gold/20">
-                <dest.icon className="h-6 w-6 text-gold-dark" />
+                <dest.icon className="h-6 w-6 text-primary" />
               </div>
               <h3 className="mt-4 font-semibold text-foreground">
                 {dest.title}

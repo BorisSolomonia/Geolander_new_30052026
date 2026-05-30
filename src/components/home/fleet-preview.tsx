@@ -71,7 +71,7 @@ export async function FleetPreview() {
 
                 <Button
                   asChild
-                  className="mt-4 w-full bg-navy hover:bg-navy-dark"
+                  className="mt-4 w-full"
                 >
                   <Link href={`/fleet/${car.id}`}>
                     {t("common.bookNow")}

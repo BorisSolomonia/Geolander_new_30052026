@@ -66,7 +66,7 @@ export function AdminSettingsForm({ initialValues }: AdminSettingsFormProps) {
 
         <Button
           onClick={handleSave}
-          className="bg-navy hover:bg-navy-dark"
+          className="w-full sm:w-auto"
           disabled={saving}
         >
           {saving ? (

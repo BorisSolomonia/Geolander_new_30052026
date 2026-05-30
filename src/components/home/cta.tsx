@@ -10,7 +10,7 @@ export function CTA() {
   const t = useTranslations("cta");
 
   return (
-    <section className="bg-navy py-20">
+    <section className="border-y border-border/40 bg-card/40 py-20">
       <div className="mx-auto max-w-7xl px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -26,7 +26,7 @@ export function CTA() {
           <Button
             asChild
             size="lg"
-            className="mt-8 bg-gold text-navy hover:bg-gold-dark"
+            className="mt-8 bg-primary text-primary-foreground hover:bg-primary/90"
           >
             <Link href="/fleet">
               {t("button")}

@@ -255,7 +255,7 @@ export function PlacesManager({ regions }: { regions: RegionWithLocations[] }) {
           <Button variant="outline" onClick={() => openLocationDialog()}>
             Add Location
           </Button>
-          <Button className="bg-navy hover:bg-navy-dark" onClick={() => openRegionDialog()}>
+          <Button onClick={() => openRegionDialog()}>
             Add Region
           </Button>
         </div>
@@ -438,7 +438,7 @@ export function PlacesManager({ regions }: { regions: RegionWithLocations[] }) {
               }
             />
             <Button
-              className="bg-navy hover:bg-navy-dark"
+              className="w-full"
               disabled={saving}
               onClick={() => void handleSaveRegion()}
             >
@@ -631,7 +631,7 @@ export function PlacesManager({ regions }: { regions: RegionWithLocations[] }) {
               }
             />
             <Button
-              className="bg-navy hover:bg-navy-dark"
+              className="w-full"
               disabled={saving}
               onClick={() => void handleSaveLocation()}
             >

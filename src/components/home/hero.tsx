@@ -44,7 +44,7 @@ export function Hero() {
             <Button
               asChild
               size="lg"
-              className="bg-gold text-navy hover:bg-gold-dark"
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
             >
               <Link href="/fleet">
                 {t("cta")}

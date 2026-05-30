@@ -127,7 +127,7 @@ export function MusicManager({ genres }: { genres: MusicGenre[] }) {
           <h1 className="text-2xl font-bold">Music</h1>
           <p className="text-muted-foreground">{genres.length} music genres</p>
         </div>
-        <Button className="bg-navy hover:bg-navy-dark" onClick={() => openDialog()}>
+        <Button onClick={() => openDialog()}>
           Add Genre
         </Button>
       </div>
@@ -256,7 +256,7 @@ export function MusicManager({ genres }: { genres: MusicGenre[] }) {
               onChange={(images) => setForm((current) => ({ ...current, images }))}
             />
             <Button
-              className="bg-navy hover:bg-navy-dark"
+              className="w-full"
               disabled={saving}
               onClick={() => void handleSave()}
             >

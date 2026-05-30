@@ -25,7 +25,7 @@ export default async function AdminCarsPage() {
           <h1 className="text-2xl font-bold">Cars</h1>
           <p className="text-muted-foreground">{cars.length} cars in fleet</p>
         </div>
-        <Button asChild className="bg-navy hover:bg-navy-dark">
+        <Button asChild>
           <Link href="/admin/cars/new">
             <Plus className="mr-2 h-4 w-4" />
             Add Car
@@ -60,7 +60,7 @@ export default async function AdminCarsPage() {
                   <Badge
                     variant={car.available ? "default" : "secondary"}
                     className={
-                      car.available ? "bg-green-100 text-green-700" : ""
+                      car.available ? "bg-green-500/10 text-green-400" : ""
                     }
                   >
                     {car.available ? "Available" : "Unavailable"}

@@ -311,7 +311,7 @@ export function EditCarForm({ car }: EditCarFormProps) {
 
           <Button
             type="submit"
-            className="bg-navy hover:bg-navy-dark"
+            className="w-full sm:w-auto"
             disabled={isSubmitting}
           >
             {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}

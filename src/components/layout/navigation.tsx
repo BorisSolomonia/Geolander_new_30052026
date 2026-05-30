@@ -61,7 +61,7 @@ export function Navigation() {
         {/* Right side */}
         <div className="flex items-center gap-2">
           <LocaleSwitcher />
-          <Button asChild className="hidden bg-gold text-navy hover:bg-gold-dark sm:inline-flex">
+          <Button asChild className="hidden bg-primary text-primary-foreground hover:bg-primary/90 sm:inline-flex">
             <Link href="/fleet">{t("common.bookNow")}</Link>
           </Button>
 
@@ -97,7 +97,7 @@ export function Navigation() {
                 <div className="mt-4 border-t pt-4">
                   <Button
                     asChild
-                    className="w-full bg-gold text-navy hover:bg-gold-dark"
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                   >
                     <Link href="/fleet" onClick={() => setIsOpen(false)}>
                       {t("common.bookNow")}

@@ -91,7 +91,7 @@ export function FleetGrid({ cars }: FleetGridProps) {
 
               <Button
                 asChild
-                className="mt-4 w-full bg-navy hover:bg-navy-dark"
+              className="mt-4 w-full"
               >
                 <Link href={`/fleet/${car.id}`}>
                   {tc("bookNow")}

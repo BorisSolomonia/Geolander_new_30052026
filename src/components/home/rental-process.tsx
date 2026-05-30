@@ -33,10 +33,10 @@ export function RentalProcess() {
               transition={{ duration: 0.4, delay: i * 0.15 }}
               className="relative text-center"
             >
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border-2 border-gold bg-white">
-                <step.icon className="h-7 w-7 text-navy" />
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border-2 border-primary bg-card">
+                <step.icon className="h-7 w-7 text-primary" />
               </div>
-              <div className="absolute left-1/2 top-0 flex h-6 w-6 -translate-x-1/2 -translate-y-2 items-center justify-center rounded-full bg-gold text-xs font-bold text-navy">
+              <div className="absolute left-1/2 top-0 flex h-6 w-6 -translate-x-1/2 -translate-y-2 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
                 {i + 1}
               </div>
               <h3 className="mt-5 font-semibold text-foreground">

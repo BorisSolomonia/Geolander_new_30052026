@@ -27,7 +27,6 @@ export function RegionList({ regions, locale }: RegionListProps) {
           variant={activeRegion === null ? "default" : "outline"}
           size="sm"
           onClick={() => setActiveRegion(null)}
-          className={activeRegion === null ? "bg-navy" : ""}
         >
           {t("allRegions")}
         </Button>
@@ -37,7 +36,6 @@ export function RegionList({ regions, locale }: RegionListProps) {
             variant={activeRegion === region.id ? "default" : "outline"}
             size="sm"
             onClick={() => setActiveRegion(region.id)}
-            className={activeRegion === region.id ? "bg-navy" : ""}
           >
             {locale === "ka" && region.nameKa ? region.nameKa : region.nameEn}
           </Button>
@@ -124,7 +122,7 @@ export function RegionList({ regions, locale }: RegionListProps) {
                               href={location.googleMapsUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 text-sm text-navy hover:underline font-medium"
+                              className="inline-flex items-center gap-1 text-sm text-primary hover:underline font-medium"
                             >
                               <MapPin className="h-3.5 w-3.5" />
                               {t("viewOnMap")}

@@ -174,7 +174,7 @@ export function TravelInfoManager({
           <Button variant="outline" onClick={() => openStationDialog()}>
             Add Fuel Station
           </Button>
-          <Button className="bg-navy hover:bg-navy-dark" onClick={() => openMarketDialog()}>
+          <Button onClick={() => openMarketDialog()}>
             Add Market
           </Button>
         </div>
@@ -337,7 +337,7 @@ export function TravelInfoManager({
                 }))
               }
             />
-            <Button className="bg-navy hover:bg-navy-dark" disabled={saving} onClick={() => void saveStation()}>
+            <Button className="w-full" disabled={saving} onClick={() => void saveStation()}>
               Save Fuel Station
             </Button>
           </div>
@@ -430,7 +430,7 @@ export function TravelInfoManager({
                 }))
               }
             />
-            <Button className="bg-navy hover:bg-navy-dark" disabled={saving} onClick={() => void saveMarket()}>
+            <Button className="w-full" disabled={saving} onClick={() => void saveMarket()}>
               Save Market
             </Button>
           </div>

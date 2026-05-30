@@ -27,11 +27,11 @@ export const appConfig = {
   siteUrl: getEnv("NEXT_PUBLIC_SITE_URL", "https://geolander.ge"),
   defaultLocale: getEnv("NEXT_PUBLIC_DEFAULT_LOCALE", "en"),
   locales: getEnvList("NEXT_PUBLIC_LOCALES", ["en", "ka"]),
-  supportPhone: getEnv("NEXT_PUBLIC_SUPPORT_PHONE", "+995XXXXXXXXX"),
+  supportPhone: getEnv("NEXT_PUBLIC_SUPPORT_PHONE", "+995551330414"),
   supportEmail: getEnv("NEXT_PUBLIC_SUPPORT_EMAIL", "info@geolander.ge"),
   supportAddress: getEnv("NEXT_PUBLIC_SUPPORT_ADDRESS", "Tbilisi, Georgia"),
   businessHours: getEnv("NEXT_PUBLIC_BUSINESS_HOURS", "24/7"),
-  whatsappNumber: getEnv("NEXT_PUBLIC_WHATSAPP_NUMBER", "+995XXXXXXXXX"),
+  whatsappNumber: getEnv("NEXT_PUBLIC_WHATSAPP_NUMBER", "+995551330414"),
   instagramUrl: getEnv(
     "NEXT_PUBLIC_INSTAGRAM_URL",
     "https://instagram.com/geolander"
@@ -41,6 +41,10 @@ export const appConfig = {
     "https://facebook.com/geolander"
   ),
   whatsappBaseUrl: getEnv("NEXT_PUBLIC_WHATSAPP_BASE_URL", "https://wa.me/"),
+  officeGoogleMapsUrl: getEnv(
+    "NEXT_PUBLIC_OFFICE_GOOGLE_MAPS_URL",
+    "https://maps.app.goo.gl/WKGqAsFnKuGPK49E7"
+  ),
   devOrigins: getEnvList("DEV_ALLOWED_ORIGINS", [
     `http://localhost:${appPort}`,
     `http://127.0.0.1:${appPort}`,
@@ -250,7 +254,7 @@ export const defaultSiteSettings = {
   email: appConfig.supportEmail,
   address: appConfig.supportAddress,
   office_name: appConfig.siteName,
-  office_google_maps_url: "",
+  office_google_maps_url: appConfig.officeGoogleMapsUrl,
   office_latitude: "",
   office_longitude: "",
   instagram: appConfig.instagramUrl,
