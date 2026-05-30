@@ -30,7 +30,7 @@ export default async function TravelInfoPage({ params }: Props) {
       {/* Fuel Stations */}
       <div className="mb-16">
         <div className="mb-6 flex items-center gap-2">
-          <Fuel className="h-6 w-6 text-navy" />
+          <Fuel className="h-6 w-6 text-primary" />
           <h2 className="text-2xl font-bold">{t("fuelStations")}</h2>
         </div>
         <p className="mb-6 text-muted-foreground">{t("fuelStationsDesc")}</p>
@@ -49,7 +49,7 @@ export default async function TravelInfoPage({ params }: Props) {
                     href={station.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1 text-sm text-navy hover:underline"
+                    className="mt-3 inline-flex items-center gap-1 text-sm text-primary hover:underline"
                   >
                     {t("visitWebsite")}
                     <ExternalLink className="h-3 w-3" />
@@ -64,7 +64,7 @@ export default async function TravelInfoPage({ params }: Props) {
       {/* Markets */}
       <div>
         <div className="mb-6 flex items-center gap-2">
-          <ShoppingCart className="h-6 w-6 text-navy" />
+          <ShoppingCart className="h-6 w-6 text-primary" />
           <h2 className="text-2xl font-bold">{t("markets")}</h2>
         </div>
         <p className="mb-6 text-muted-foreground">{t("marketsDesc")}</p>
@@ -78,9 +78,9 @@ export default async function TravelInfoPage({ params }: Props) {
                     variant="secondary"
                     className={
                       market.priceLevel === "budget"
-                        ? "bg-green-100 text-green-700"
+                        ? "bg-green-500/10 text-green-400 border border-green-500/20"
                         : market.priceLevel === "premium"
-                          ? "bg-gold/20 text-gold-dark"
+                          ? "bg-primary/10 text-primary border border-primary/20"
                           : ""
                     }
                   >

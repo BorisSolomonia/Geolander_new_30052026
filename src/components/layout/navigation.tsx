@@ -18,7 +18,7 @@ export function Navigation() {
   const isHomePage = pathname === "/";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         {/* Logo */}
         <Link href="/" className="flex items-center">
@@ -48,7 +48,7 @@ export function Navigation() {
                 className={cn(
                   "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                   isActive
-                    ? "bg-navy/10 text-navy"
+                    ? "bg-primary/15 text-primary"
                     : "text-muted-foreground hover:bg-muted hover:text-foreground"
                 )}
               >
@@ -86,7 +86,7 @@ export function Navigation() {
                       className={cn(
                         "rounded-md px-3 py-2.5 text-sm font-medium transition-colors",
                         isActive
-                          ? "bg-navy/10 text-navy"
+                          ? "bg-primary/15 text-primary"
                           : "text-muted-foreground hover:bg-muted"
                       )}
                     >

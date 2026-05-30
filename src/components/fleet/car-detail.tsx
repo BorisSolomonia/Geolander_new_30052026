@@ -116,8 +116,8 @@ export function CarDetail({ car, locale }: CarDetailProps) {
                   onClick={() => setSelectedImage(i)}
                   className={`relative h-16 w-20 overflow-hidden rounded-md border-2 transition-colors ${
                     i === selectedImage
-                      ? "border-navy"
-                      : "border-transparent opacity-60 hover:opacity-100"
+                      ? "border-primary"
+                      : "border-border/40 opacity-60 hover:opacity-100"
                   }`}
                 >
                   <Image
@@ -142,7 +142,7 @@ export function CarDetail({ car, locale }: CarDetailProps) {
               <p className="text-lg text-muted-foreground">{car.year}</p>
             </div>
             <div className="text-right">
-              <p className="text-2xl font-bold text-navy">
+              <p className="text-2xl font-bold text-primary">
                 {formatCurrency(car.pricePerDay)}
               </p>
               <p className="text-sm text-muted-foreground">{tc("perDay")}</p>
@@ -158,19 +158,19 @@ export function CarDetail({ car, locale }: CarDetailProps) {
           {/* Specs */}
           <div className="mt-6 grid grid-cols-3 gap-4">
             <div className="rounded-lg border border-border p-3 text-center">
-              <Users className="mx-auto h-5 w-5 text-navy" />
+              <Users className="mx-auto h-5 w-5 text-primary" />
               <p className="mt-1 text-sm font-medium">
                 {car.seats} {t("seats")}
               </p>
             </div>
             <div className="rounded-lg border border-border p-3 text-center">
-              <Settings2 className="mx-auto h-5 w-5 text-navy" />
+              <Settings2 className="mx-auto h-5 w-5 text-primary" />
               <p className="mt-1 text-sm font-medium">
                 {t(car.transmission)}
               </p>
             </div>
             <div className="rounded-lg border border-border p-3 text-center">
-              <Fuel className="mx-auto h-5 w-5 text-navy" />
+              <Fuel className="mx-auto h-5 w-5 text-primary" />
               <p className="mt-1 text-sm font-medium">{t(car.fuelType)}</p>
             </div>
           </div>
@@ -329,7 +329,7 @@ export function CarDetail({ car, locale }: CarDetailProps) {
                   </div>
                   <div className="flex justify-between border-t pt-1 font-semibold">
                     <span>{t("totalPrice")}</span>
-                    <span className="text-navy">
+                    <span className="text-primary font-bold">
                       {formatCurrency(totalPrice)}
                     </span>
                   </div>

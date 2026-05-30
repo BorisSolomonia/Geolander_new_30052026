@@ -89,8 +89,8 @@ export default async function ContactPage({ params }: Props) {
       <div className="mx-auto mt-12 max-w-4xl grid gap-6 md:grid-cols-2">
         <Card>
           <CardContent className="flex items-start gap-4 p-6">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy/10">
-              <Clock className="h-5 w-5 text-navy" />
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
+              <Clock className="h-5 w-5 text-primary" />
             </div>
             <div>
               <h3 className="font-semibold">{t("hours")}</h3>
@@ -102,8 +102,8 @@ export default async function ContactPage({ params }: Props) {
         </Card>
         <Card>
           <CardContent className="flex items-start gap-4 p-6">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy/10">
-              <MapPin className="h-5 w-5 text-navy" />
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
+              <MapPin className="h-5 w-5 text-primary" />
             </div>
             <div>
               <h3 className="font-semibold">{t("address")}</h3>
