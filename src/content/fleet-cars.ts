@@ -36,11 +36,17 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/mitsubishi-outlander-qy-045-qy/1.jpg",
+      "/cars/mitsubishi-outlander-qy-045-qy/2.jpg",
+      "/cars/mitsubishi-outlander-qy-045-qy/3.jpg",
+      "/cars/mitsubishi-outlander-qy-045-qy/4.jpg",
+      "/cars/mitsubishi-outlander-qy-045-qy/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
-    sortOrder: 1,
+    sortOrder: 9,
     pricing: [
       {
         season: 1,
@@ -108,7 +114,13 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/mitsubishi-outlander-qy075qy/1.jpg",
+      "/cars/mitsubishi-outlander-qy075qy/2.jpg",
+      "/cars/mitsubishi-outlander-qy075qy/3.jpg",
+      "/cars/mitsubishi-outlander-qy075qy/4.jpg",
+      "/cars/mitsubishi-outlander-qy075qy/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
@@ -180,7 +192,13 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/subaru-forester-ll802ml/1.jpg",
+      "/cars/subaru-forester-ll802ml/2.jpg",
+      "/cars/subaru-forester-ll802ml/3.jpg",
+      "/cars/subaru-forester-ll802ml/4.jpg",
+      "/cars/subaru-forester-ll802ml/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
@@ -252,7 +270,13 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/subaru-forester-tt902ft/1.jpg",
+      "/cars/subaru-forester-tt902ft/2.jpg",
+      "/cars/subaru-forester-tt902ft/3.jpg",
+      "/cars/subaru-forester-tt902ft/4.jpg",
+      "/cars/subaru-forester-tt902ft/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
@@ -324,7 +348,13 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/subaru-forester-uu108ul/1.jpg",
+      "/cars/subaru-forester-uu108ul/2.jpg",
+      "/cars/subaru-forester-uu108ul/3.jpg",
+      "/cars/subaru-forester-uu108ul/4.jpg",
+      "/cars/subaru-forester-uu108ul/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
@@ -396,7 +426,13 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/subaru-forester-bc-402-cc/1.jpg",
+      "/cars/subaru-forester-bc-402-cc/2.jpg",
+      "/cars/subaru-forester-bc-402-cc/3.jpg",
+      "/cars/subaru-forester-bc-402-cc/4.jpg",
+      "/cars/subaru-forester-bc-402-cc/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
@@ -468,7 +504,13 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/subaru-forester-ee346el/1.jpg",
+      "/cars/subaru-forester-ee346el/2.jpg",
+      "/cars/subaru-forester-ee346el/3.jpg",
+      "/cars/subaru-forester-ee346el/4.jpg",
+      "/cars/subaru-forester-ee346el/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
@@ -540,11 +582,17 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/toyota-rav4-gg581wg/1.jpg",
+      "/cars/toyota-rav4-gg581wg/2.jpg",
+      "/cars/toyota-rav4-gg581wg/3.jpg",
+      "/cars/toyota-rav4-gg581wg/4.jpg",
+      "/cars/toyota-rav4-gg581wg/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
-    sortOrder: 8,
+    sortOrder: 11,
     pricing: [
       {
         season: 1,
@@ -612,11 +660,17 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/subaru-forester-jz602zj/1.jpg",
+      "/cars/subaru-forester-jz602zj/2.jpg",
+      "/cars/subaru-forester-jz602zj/3.jpg",
+      "/cars/subaru-forester-jz602zj/4.jpg",
+      "/cars/subaru-forester-jz602zj/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
-    sortOrder: 9,
+    sortOrder: 8,
     pricing: [
       {
         season: 1,
@@ -684,7 +738,13 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/subaru-forester-wx-356-wx/1.jpg",
+      "/cars/subaru-forester-wx-356-wx/2.jpg",
+      "/cars/subaru-forester-wx-356-wx/3.jpg",
+      "/cars/subaru-forester-wx-356-wx/4.jpg",
+      "/cars/subaru-forester-wx-356-wx/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
@@ -756,11 +816,17 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/jeep-renegade-nn-545-kn/1.jpg",
+      "/cars/jeep-renegade-nn-545-kn/2.jpg",
+      "/cars/jeep-renegade-nn-545-kn/3.jpg",
+      "/cars/jeep-renegade-nn-545-kn/4.jpg",
+      "/cars/jeep-renegade-nn-545-kn/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
-    sortOrder: 11,
+    sortOrder: 1,
     pricing: [
       {
         season: 1,
@@ -796,7 +862,13 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/mitsubishi-outlander-lc-235-ll/1.jpg",
+      "/cars/mitsubishi-outlander-lc-235-ll/2.jpg",
+      "/cars/mitsubishi-outlander-lc-235-ll/3.jpg",
+      "/cars/mitsubishi-outlander-lc-235-ll/4.jpg",
+      "/cars/mitsubishi-outlander-lc-235-ll/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
@@ -836,7 +908,13 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/toyota-highlander-lc-785-ll/1.jpg",
+      "/cars/toyota-highlander-lc-785-ll/2.jpg",
+      "/cars/toyota-highlander-lc-785-ll/3.jpg",
+      "/cars/toyota-highlander-lc-785-ll/4.jpg",
+      "/cars/toyota-highlander-lc-785-ll/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
@@ -876,7 +954,13 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/subaru-crosstrek-dy-089-dy/1.jpg",
+      "/cars/subaru-crosstrek-dy-089-dy/2.jpg",
+      "/cars/subaru-crosstrek-dy-089-dy/3.jpg",
+      "/cars/subaru-crosstrek-dy-089-dy/4.jpg",
+      "/cars/subaru-crosstrek-dy-089-dy/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
@@ -916,7 +1000,13 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/subaru-crosstrek-rz117zr/1.jpg",
+      "/cars/subaru-crosstrek-rz117zr/2.jpg",
+      "/cars/subaru-crosstrek-rz117zr/3.jpg",
+      "/cars/subaru-crosstrek-rz117zr/4.jpg",
+      "/cars/subaru-crosstrek-rz117zr/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
@@ -956,7 +1046,13 @@ const fleetCars: FleetCarSeed[] = [
     transmission: "automatic",
     fuelType: "gasoline",
     features: [],
-    images: [],
+    images: [
+      "/cars/jeep-wrangler-ys-105-sy/1.jpg",
+      "/cars/jeep-wrangler-ys-105-sy/2.jpg",
+      "/cars/jeep-wrangler-ys-105-sy/3.jpg",
+      "/cars/jeep-wrangler-ys-105-sy/4.jpg",
+      "/cars/jeep-wrangler-ys-105-sy/5.jpg"
+    ],
     descriptionEn: "",
     descriptionKa: "",
     available: true,
