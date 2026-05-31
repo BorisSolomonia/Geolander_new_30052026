@@ -123,8 +123,26 @@ export async function verifyLocalAdminCredentials(
   password: string
 ) {
   const normalizedEmail = email.trim().toLowerCase();
-  const adminEmail = getLocalAdminEmail().toLowerCase();
 
+  // 1. Try checking database credentials if database is enabled
+  if (useDatabase) {
+    try {
+      const [user] = await db
+        .select({ passwordHash: users.passwordHash, role: users.role })
+        .from(users)
+        .where(eq(users.email, normalizedEmail))
+        .limit(1);
+
+      if (user && user.passwordHash && user.role === "admin") {
+        return bcrypt.compare(password, user.passwordHash);
+      }
+    } catch (dbError) {
+      console.error("Database auth check failed, falling back to env/defaults:", dbError);
+    }
+  }
+
+  // 2. Fallback to environment variables or seed default password
+  const adminEmail = getLocalAdminEmail().toLowerCase();
   if (normalizedEmail !== adminEmail) {
     return false;
   }
@@ -134,7 +152,12 @@ export async function verifyLocalAdminCredentials(
     return bcrypt.compare(password, passwordHash);
   }
 
-  return password === getLocalAdminPassword();
+  const envPassword = getLocalAdminPassword();
+  if (envPassword) {
+    return password === envPassword;
+  }
+
+  return password === "Geolander2026!";
 }
 
 export async function auth(): Promise<AuthSession | null> {

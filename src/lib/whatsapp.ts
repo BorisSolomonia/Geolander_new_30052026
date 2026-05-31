@@ -1,4 +1,3 @@
-import { WHATSAPP_BASE_URL } from "./constants";
 import { businessUiCopy } from "@/content/business-defaults";
 
 interface BookingMessage {
@@ -17,10 +16,10 @@ export function buildWhatsAppUrl(
 ): string {
   const cleanNumber = phoneNumber.replace(/[^+\d]/g, "");
   if (!message) {
-    return `http://wa.me/${cleanNumber}`;
+    return `https://wa.me/${cleanNumber}`;
   }
   const encodedMessage = encodeURIComponent(message);
-  return `${WHATSAPP_BASE_URL}${cleanNumber}?text=${encodedMessage}`;
+  return `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
 }
 
 export function buildBookingMessage({
