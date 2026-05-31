@@ -49,10 +49,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid folder" }, { status: 400 });
   }
 
-  const maxSize = 5 * 1024 * 1024; // 5MB
+  const maxSize = 4 * 1024 * 1024; // 4MB
   if (file.size > maxSize) {
     return NextResponse.json(
-      { error: "File too large. Max 5MB." },
+      { error: "File too large. Max 4MB." },
       { status: 400 }
     );
   }

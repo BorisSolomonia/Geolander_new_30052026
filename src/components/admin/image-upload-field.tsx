@@ -17,6 +17,71 @@ type ImageUploadFieldProps = {
   maxImages?: number;
 };
 
+// Client-side image compression function
+function compressImage(
+  file: File,
+  maxWidth = 1920,
+  maxHeight = 1920,
+  quality = 0.8
+): Promise<File> {
+  return new Promise((resolve) => {
+    if (!file.type.startsWith("image/")) {
+      return resolve(file);
+    }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event) => {
+      const img = new window.Image();
+      img.src = event.target?.result as string;
+      img.onload = () => {
+        let width = img.width;
+        let height = img.height;
+
+        // Scale dimensions down if they exceed maximum limits
+        if (width > maxWidth || height > maxHeight) {
+          const ratio = Math.min(maxWidth / width, maxHeight / height);
+          width = Math.round(width * ratio);
+          height = Math.round(height * ratio);
+        }
+
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          return resolve(file);
+        }
+
+        ctx.drawImage(img, 0, 0, width, height);
+
+        // Convert canvas back to Blob, standardizing to JPEG format
+        canvas.toBlob(
+          (blob) => {
+            if (!blob) {
+              return resolve(file);
+            }
+            // If the compressed image size is not actually smaller, fallback to original
+            if (blob.size >= file.size) {
+              return resolve(file);
+            }
+            const compressedFile = new File([blob], file.name, {
+              type: "image/jpeg",
+              lastModified: Date.now(),
+            });
+            resolve(compressedFile);
+          },
+          "image/jpeg",
+          quality
+        );
+      };
+      img.onerror = () => resolve(file);
+    };
+    reader.onerror = () => resolve(file);
+  });
+}
+
 export function ImageUploadField({
   label,
   folder,
@@ -43,7 +108,26 @@ export function ImageUploadField({
     try {
       const uploadedUrls: string[] = [];
 
-      for (const file of Array.from(files)) {
+      for (let file of Array.from(files)) {
+        // Automatically compress image client-side if it exceeds 1MB
+        if (file.type.startsWith("image/") && file.size > 1 * 1024 * 1024) {
+          try {
+            const compressed = await compressImage(file);
+            file = compressed;
+          } catch (error) {
+            console.error("Image compression failed, using original file:", error);
+          }
+        }
+
+        const maxSize = 4 * 1024 * 1024; // 4MB Vercel payload limit
+        if (file.size > maxSize) {
+          throw new Error(
+            `File "${file.name}" is too large (${(file.size / (1024 * 1024)).toFixed(
+              2
+            )}MB). Maximum size is 4MB. Please compress your image first.`
+          );
+        }
+
         const body = new FormData();
         body.append("file", file);
         body.append("bucket", "images");
