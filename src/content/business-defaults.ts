@@ -42,6 +42,12 @@ export const seededSiteSettings: Array<{
   { key: "payment_currency", value: defaultSiteSettings.payment_currency },
   { key: "payment_mode", value: defaultSiteSettings.payment_mode },
   { key: "payment_enabled", value: defaultSiteSettings.payment_enabled },
+  { key: "google_rating", value: defaultSiteSettings.google_rating },
+  {
+    key: "google_review_count",
+    value: defaultSiteSettings.google_review_count,
+  },
+  { key: "price_range", value: defaultSiteSettings.price_range },
 ];
 
 export const adminSettingsFields: Array<{
@@ -163,6 +169,21 @@ export const adminSettingsFields: Array<{
     key: "payment_enabled",
     label: "Payment Enabled",
     placeholder: defaultSiteSettings.payment_enabled,
+  },
+  {
+    key: "google_rating",
+    label: "Google Rating (e.g. 4.9) — for review schema",
+    placeholder: "4.9",
+  },
+  {
+    key: "google_review_count",
+    label: "Google Review Count (e.g. 37) — for review schema",
+    placeholder: "37",
+  },
+  {
+    key: "price_range",
+    label: "Price Range ($ to $$$$)",
+    placeholder: defaultSiteSettings.price_range,
   },
 ];
 

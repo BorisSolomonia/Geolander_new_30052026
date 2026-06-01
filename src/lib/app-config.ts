@@ -29,7 +29,10 @@ export const appConfig = {
   locales: getEnvList("NEXT_PUBLIC_LOCALES", ["en", "ka"]),
   supportPhone: getEnv("NEXT_PUBLIC_SUPPORT_PHONE", "+995551330414"),
   supportEmail: getEnv("NEXT_PUBLIC_SUPPORT_EMAIL", "info@geo-lander.com"),
-  supportAddress: getEnv("NEXT_PUBLIC_SUPPORT_ADDRESS", "Tbilisi, Georgia"),
+  supportAddress: getEnv(
+    "NEXT_PUBLIC_SUPPORT_ADDRESS",
+    "8/5 Vedzini St, Tbilisi 0108"
+  ),
   businessHours: getEnv("NEXT_PUBLIC_BUSINESS_HOURS", "24/7"),
   whatsappNumber: getEnv("NEXT_PUBLIC_WHATSAPP_NUMBER", "+995551330414"),
   instagramUrl: getEnv(
@@ -262,6 +265,12 @@ export const defaultSiteSettings = {
   organization_name: appConfig.siteName,
   organization_logo_url: "/logo.png",
   seo_og_image_url: "/logo.png",
+  // GEO/AEO signals — sourced from the real Google Business Profile.
+  // AggregateRating schema is emitted ONLY when both rating and count are set.
+  // Keep these in sync with the live Google rating.
+  google_rating: "5.0",
+  google_review_count: "81",
+  price_range: "$$",
   payment_provider: "",
   payment_currency: "USD",
   payment_mode: "full",

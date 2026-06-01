@@ -5,6 +5,7 @@
     "places": "Places to Visit",
     "travelInfo": "Travel Info",
     "music": "Georgian Music",
+    "blog": "Blog",
     "terms": "Terms",
     "contact": "Contact"
   },
@@ -166,6 +167,11 @@
     "title": "Ready to Explore Georgia?",
     "subtitle": "Book your perfect rental car today and start an unforgettable adventure",
     "button": "Browse Our Fleet"
+  },
+  "blog": {
+    "title": "Travel & Car Rental Guides",
+    "subtitle": "Honest guides to renting a car and exploring Georgia",
+    "readArticle": "Read article"
   },
   "admin": {
     "dashboard": "Dashboard",

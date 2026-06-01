@@ -55,6 +55,11 @@ export default async function CarDetailPage({ params }: Props) {
       "@type": "Offer",
       priceCurrency: "USD",
       price: car.pricePerDay,
+      availability: car.available
+        ? "https://schema.org/InStock"
+        : "https://schema.org/OutOfStock",
+      url: `${baseUrl}${locale === "en" ? "" : `/${locale}`}/fleet/${carId}`,
+      seller: { "@id": `${baseUrl}/#organization` },
       priceSpecification: {
         "@type": "UnitPriceSpecification",
         price: car.pricePerDay,

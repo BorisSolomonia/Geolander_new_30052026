@@ -14,6 +14,7 @@ export const NAV_LINKS = [
   { href: "/places", labelKey: "nav.places" },
   { href: "/travel-info", labelKey: "nav.travelInfo" },
   { href: "/music", labelKey: "nav.music" },
+  { href: "/blog", labelKey: "nav.blog" },
   { href: "/terms", labelKey: "nav.terms" },
   { href: "/contact", labelKey: "nav.contact" },
 ] as const;

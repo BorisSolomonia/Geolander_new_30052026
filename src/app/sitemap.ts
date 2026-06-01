@@ -3,6 +3,7 @@ import { getSiteSettings } from "@/lib/site-settings";
 import { getCars } from "@/lib/actions/cars";
 import { getRegions } from "@/lib/actions/places";
 import { getMusicGenres } from "@/lib/actions/music";
+import { getAllPosts } from "@/content/blog/posts";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [settings, cars, regions, musicGenres] = await Promise.all([
@@ -13,7 +14,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
 
   const baseUrl = (settings.site_url || "http://localhost:3015").replace(/\/$/, "");
-  const staticPaths = ["", "/fleet", "/places", "/music", "/travel-info", "/contact", "/terms"];
+  const staticPaths = ["", "/fleet", "/places", "/music", "/travel-info", "/blog", "/contact", "/terms"];
+  const posts = getAllPosts();
   const locales = ["en", "ka", "he", "ar"];
 
   const getAlternates = (path: string) => {
@@ -45,6 +47,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/music#${genre.slug}`,
       lastModified: genre.updatedAt,
       alternates: getAlternates(`/music#${genre.slug}`),
+    })),
+    ...posts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.dateModified),
+      alternates: getAlternates(`/blog/${post.slug}`),
     })),
   ];
 }
