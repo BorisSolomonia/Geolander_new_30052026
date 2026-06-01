@@ -24,11 +24,11 @@ export const appConfig = {
     "NEXT_PUBLIC_SITE_SEO_DESCRIPTION",
     "Premium car rental service in Georgia. Explore the beauty of the Caucasus with comfort and reliability. Toyota RAV4, Mercedes E-Class, Hyundai Tucson."
   ),
-  siteUrl: getEnv("NEXT_PUBLIC_SITE_URL", "https://geolander.ge"),
+  siteUrl: getEnv("NEXT_PUBLIC_SITE_URL", "https://geo-lander.com"),
   defaultLocale: getEnv("NEXT_PUBLIC_DEFAULT_LOCALE", "en"),
   locales: getEnvList("NEXT_PUBLIC_LOCALES", ["en", "ka"]),
   supportPhone: getEnv("NEXT_PUBLIC_SUPPORT_PHONE", "+995551330414"),
-  supportEmail: getEnv("NEXT_PUBLIC_SUPPORT_EMAIL", "info@geolander.ge"),
+  supportEmail: getEnv("NEXT_PUBLIC_SUPPORT_EMAIL", "info@geo-lander.com"),
   supportAddress: getEnv("NEXT_PUBLIC_SUPPORT_ADDRESS", "Tbilisi, Georgia"),
   businessHours: getEnv("NEXT_PUBLIC_BUSINESS_HOURS", "24/7"),
   whatsappNumber: getEnv("NEXT_PUBLIC_WHATSAPP_NUMBER", "+995551330414"),

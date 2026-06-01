@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { CarDetail } from "@/components/fleet/car-detail";
 import type { Metadata } from "next";
 import { getSeoMetadata } from "@/lib/seo-server";
+import { getSiteSettings } from "@/lib/site-settings";
 
 export const dynamic = "force-dynamic";
 
@@ -28,8 +29,49 @@ export default async function CarDetailPage({ params }: Props) {
 
   if (!car) notFound();
 
+  const settings = await getSiteSettings();
+  const baseUrl = (settings.site_url || "https://geo-lander.com").replace(/\/$/, "");
+
+  const carJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Car",
+    name: `${car.brand} ${car.model} ${car.year}`,
+    image: car.images.length > 0
+      ? (car.images[0].startsWith("http") ? car.images[0] : `${baseUrl}${car.images[0]}`)
+      : `${baseUrl}/logo.png`,
+    description: locale === "ka" ? car.descriptionKa : car.descriptionEn,
+    brand: {
+      "@type": "Brand",
+      name: car.brand,
+    },
+    model: car.model,
+    vehicleModelDate: car.year.toString(),
+    color: car.color || undefined,
+    bodyType: car.bodyType || undefined,
+    vehicleSeatingCapacity: car.seats,
+    vehicleTransmission: car.transmission,
+    fuelType: car.fuelType,
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "USD",
+      price: car.pricePerDay,
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: car.pricePerDay,
+        priceCurrency: "USD",
+        unitText: "DAY",
+      },
+    },
+  };
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(carJsonLd),
+        }}
+      />
       <Breadcrumbs
         items={[
           { label: t("nav.home"), href: "/" },
