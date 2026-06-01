@@ -23,7 +23,7 @@ export async function getSeoMetadata(
   const canonicalUrl = `${baseUrl}${currentPrefix}${path}`;
 
   return {
-    title,
+    title: path === "/" ? { absolute: title } : title,
     description,
     alternates: {
       canonical: canonicalUrl,
