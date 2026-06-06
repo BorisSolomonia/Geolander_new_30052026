@@ -108,7 +108,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           },
         }
       : {}),
-    sameAs: [settings.instagram, settings.facebook].filter(Boolean),
+    sameAs: [settings.facebook].filter(Boolean),
     hasMap: settings.office_google_maps_url || undefined,
   };
 

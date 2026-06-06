@@ -35,13 +35,10 @@ export const appConfig = {
   ),
   businessHours: getEnv("NEXT_PUBLIC_BUSINESS_HOURS", "24/7"),
   whatsappNumber: getEnv("NEXT_PUBLIC_WHATSAPP_NUMBER", "+995551330414"),
-  instagramUrl: getEnv(
-    "NEXT_PUBLIC_INSTAGRAM_URL",
-    "https://instagram.com/geolander"
-  ),
+  instagramUrl: getEnv("NEXT_PUBLIC_INSTAGRAM_URL", ""),
   facebookUrl: getEnv(
     "NEXT_PUBLIC_FACEBOOK_URL",
-    "https://facebook.com/geolander"
+    "https://www.facebook.com/profile.php?id=61586702468991"
   ),
   whatsappBaseUrl: getEnv("NEXT_PUBLIC_WHATSAPP_BASE_URL", "https://wa.me/"),
   officeGoogleMapsUrl: getEnv(

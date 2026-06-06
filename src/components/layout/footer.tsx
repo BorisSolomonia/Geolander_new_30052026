@@ -1,6 +1,6 @@
 import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
-import { MapPin, MessageCircle, Mail, Instagram, Facebook } from "lucide-react";
+import { MapPin, MessageCircle, Mail, Facebook } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 import { getSiteSettings } from "@/lib/site-settings";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
@@ -11,7 +11,6 @@ export async function Footer() {
   const siteTitle = settings.site_name;
   const email = settings.email;
   const address = settings.address;
-  const instagramUrl = settings.instagram;
   const facebookUrl = settings.facebook;
 
   return (
@@ -108,22 +107,17 @@ export async function Footer() {
               {t("footer.followUs")}
             </h3>
             <div className="flex gap-3">
-              <a
-                href={instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-primary hover:text-primary-foreground"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href={facebookUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-primary hover:text-primary-foreground"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
+              {facebookUrl ? (
+                <a
+                  href={facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-primary hover:text-primary-foreground"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
+              ) : null}
             </div>
           </div>
         </div>
